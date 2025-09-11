@@ -12,7 +12,7 @@ def main():
     
     response = client.models.generate_content(
         model='gemini-2.0-flash-001', 
-        contents=sys.argv[1]
+        contents=sys.argv[1] if len(sys.argv) > 1 else 'What color is the sky?'
     )
 
     print(response.text)
