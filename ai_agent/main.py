@@ -3,7 +3,7 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-
+from functions.get_files_info import get_files_info
 
 def main():
     load_dotenv()
@@ -43,3 +43,4 @@ def main():
         # print("API Key:", api_key)
     
 main()
+# print(get_files_info("calculator", "pkg"))
