@@ -31,6 +31,9 @@ def main():
     if response is None or response.usage_metadata is None:
         print("Response is malformed")
         return
+    
+    # check if the user provided the --verbose flag, 
+    # if so, print the user prompt, the prompt tokens, and the response tokens
     if len(sys.argv) > 2 and sys.argv[2] == "--verbose":
         print("User prompt:", user_prompt)
         # prints the tokens used by the model
