@@ -3,7 +3,7 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from functions.get_files_info import get_files_info
+from functions.get_files_info import get_files_info, get_file_content
 
 def main():
     load_dotenv()
@@ -42,5 +42,6 @@ def main():
         print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
         # print("API Key:", api_key)
     
-main()
-# print(get_files_info("calculator", "pkg"))
+# main()
+# print(get_file_content("calculator", "pkg"))
+print(get_file_content("calculator", "main.py"))

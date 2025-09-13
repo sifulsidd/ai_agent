@@ -1,3 +1,4 @@
+from ntpath import isdir
 import os
 
 def get_files_info(working_directory, directory="."):
@@ -22,3 +23,20 @@ def get_files_info(working_directory, directory="."):
         size = os.path.getsize(content_path)
         final_response += f"- {content}: file_size={size} bytes, is_dir={is_dir} \n"
     return final_response
+
+def get_file_content(working_directory, file_path):
+    abs_working_directory = os.path.abspath(working_directory)
+    
+    abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
+    if not abs_file_path.startswith(abs_working_directory):
+        return f'Error: Cannot read "{file_path}" as it is outside the permitted working directory'
+    
+    if not os.path.isfile(abs_file_path):
+        return f'Error: File not found or is not a regular file: "{abs_file_path}"'
+    
+    max_chars = 10000
+    with open(abs_file_path, 'r') as file:
+        file_content_string = file.read(max_chars)
+        if len(file_content_string) > max_chars:
+            return file_content_string +f'[...File "{abs_file_path}" truncated to first {max_chars} characters]'
+        return file_content_string
