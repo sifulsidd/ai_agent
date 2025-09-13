@@ -1,6 +1,7 @@
 from functions.get_files_info import get_files_info
 from functions.get_file_content import get_file_content
 from functions.write_file import write_file
+from functions.run_python_file import run_python_file
 
 def main():
     # get_files_info tests
@@ -31,12 +32,19 @@ def main():
     # print(does_not_exist_contents)
     
     # write_file tests
-    print(write_file(working_directory, "lorem.txt", "wait, this isn't lorem ipsum"))
-    print(get_file_content(working_directory, "lorem.txt"))
+    # print(write_file(working_directory, "lorem.txt", "wait, this isn't lorem ipsum"))
+    # print(get_file_content(working_directory, "lorem.txt"))
     
-    print(write_file(working_directory, "pkg/more_lorem.txt", "lorem ipsum dolor sit amet"))
-    print(get_file_content(working_directory, "pkg/more_lorem.txt"))
+    # print(write_file(working_directory, "pkg/more_lorem.txt", "lorem ipsum dolor sit amet"))
+    # print(get_file_content(working_directory, "pkg/more_lorem.txt"))
     
-    print(write_file(working_directory, "/tmp/temp.txt", "this should not be allowed"))
+    # print(write_file(working_directory, "/tmp/temp.txt", "this should not be allowed"))
+    
+    # run_python_file tests
+    print(run_python_file(working_directory, "main.py", ))
+    print(run_python_file("calculator", "main.py", ["3 + 5"]))
+    print(run_python_file(working_directory, "tests.py"))
+    print(run_python_file(working_directory, "../main.py"))
+    print(run_python_file(working_directory, "nonexistent.py"))
     
 main()
