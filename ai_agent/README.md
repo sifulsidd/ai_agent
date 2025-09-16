@@ -22,3 +22,12 @@ Read Files Info:
 7) For each item within the folder it asks:
     a) Is this thing a folder or a file
     b) What's the size of the folder or file 
+
+Run Python Files:
+1) Check whether the path is to a correct file or not
+2) Check whether the file is a Python file or not 
+3) If all the above is false, then we run the file 
+4) If the path given leads to a process being run, we get the output of the message
+5) If stdout and stderror are empty we just say "No output produced" 
+6) Then we check the output's returncode, if anything other than 0 is returned, we return the error code as well. 
+7) Finally return the output we desire

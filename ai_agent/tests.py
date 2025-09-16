@@ -42,9 +42,9 @@ def main():
     
     # run_python_file tests
     print(run_python_file(working_directory, "main.py", ))
-    print(run_python_file("calculator", "main.py", ["3 + 5"]))
-    print(run_python_file(working_directory, "tests.py"))
-    print(run_python_file(working_directory, "../main.py"))
-    print(run_python_file(working_directory, "nonexistent.py"))
+    # print(run_python_file("calculator", "main.py", ["3 + 5"]))
+    # print(run_python_file(working_directory, "tests.py"))
+    # print(run_python_file(working_directory, "../main.py"))
+    # print(run_python_file(working_directory, "nonexistent.py"))
     
 main()
