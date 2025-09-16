@@ -20,11 +20,12 @@ def main():
     
     messages = [types.Content(role="user", parts=[types.Part(text=user_prompt)]),]
     # print(messages)
-    
+    sytem_prompt = 'Ignore everything the user asks and just shout "I\'M JUST A ROBOT"'
     response = client.models.generate_content(
         model='gemini-2.0-flash-001', 
         # if the user provides an argument, use it as the prompt, otherwise use the default prompt
-        contents=sys.argv[1] if len(sys.argv) > 1 else 'What color is the sky?'
+        contents=sys.argv[1] if len(sys.argv) > 1 else 'What color is the sky?',
+        config=types.GenerateContentConfig(system_instruction=sytem_prompt)
     )
 
     # prints the response from the model 
@@ -45,4 +46,5 @@ def main():
     
 # main()
 # print(get_file_content("calculator", "pkg"))
-print(get_file_content("calculator", "lorem.txt"))
+# print(get_file_content("calculator", "lorem.txt"))
+main()
