@@ -31,3 +31,10 @@ Run Python Files:
 5) If stdout and stderror are empty we just say "No output produced" 
 6) Then we check the output's returncode, if anything other than 0 is returned, we return the error code as well. 
 7) Finally return the output we desire
+
+Call Function File:
+1) prints full args if verbose else a short message.
+2) Calls the matching function with working_directory and spreads out args(it's an array using ** can make it so each element is an argument).
+3) If result is still empty, returns an error message
+4) Otherwise prints something with successful result
+Impact: This function logs the call, dispatches to the appropriate helper, and wraps the output in types.Content/types.Part.from_function_response for the model to consume.

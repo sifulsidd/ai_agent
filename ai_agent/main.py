@@ -9,6 +9,7 @@ from functions.get_files_info import schema_get_files_info
 from functions.get_file_content import schema_get_file_content
 from functions.run_python_file import schema_run_python_file
 from functions.write_file import schema_write_file
+from call_function import call_function
 
 def main():
     load_dotenv()
@@ -60,7 +61,9 @@ def main():
     
     # check if the user provided the --verbose flag, 
     # if so, print the user prompt, the prompt tokens, and the response tokens
-    if len(sys.argv) > 2 and sys.argv[2] == "--verbose":
+    verbose = len(sys.argv) > 2 and sys.argv[2] == "--verbose"
+    
+    if verbose:
         print("User prompt:", user_prompt)
         # prints the tokens used by the model
         print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
@@ -68,9 +71,12 @@ def main():
         print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
         # print("API Key:", api_key)
     
+    
     if response.function_calls:
         for function_call_part in response.function_calls:
-            print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+            # print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+            result =call_function(function_call_part, verbose)
+            print(result)
     else:
         # prints the response from the model 
         print(response.text)
