@@ -54,7 +54,7 @@ def main():
             model='gemini-2.0-flash-001', 
             # if the user provides an argument, use it as the prompt, otherwise use the default prompt
             # contents=sys.argv[1] if len(sys.argv) > 1 else 'What color is the sky?',
-            # have to update the messages array with the new messages
+            # have to update the messages array with the new messages, previous line just repeats same message
             contents=messages,
             config=types.GenerateContentConfig(tools=[available_functions], system_instruction=system_prompt)
         )
@@ -85,7 +85,7 @@ def main():
                 messages.append(candidate.content)
         
                     
-        
+        # if the model wants to call a function, we call the function and add the result to the messages array
         if response.function_calls:
             for function_call in response.function_calls:
                 result = call_function(function_call, verbose)
