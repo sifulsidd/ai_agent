@@ -24,7 +24,11 @@ def main():
     - Execute Python files with optional arguments
     - Write or overwrite files
     
-    All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
+    When the user asks about the code project, they are referring to the working directory. So you should typically start by looking at the project files and figure out how to run the project and run it's tests.
+    You'll always want to test the project and run it's tests and make sure the behavior is working as intended.
+    All paths you provide should be relative to the working directory. 
+    You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
+    Any time you are asked to write code, you should make sure to include a comment above the change you made explaining what the change was and how this new implementation works..
     """
     
     if len(sys.argv) <2:
